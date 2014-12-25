@@ -10,6 +10,9 @@ A drop-in replacement for UISegmentedControl mimicking the style of the segmente
 - Supports selection indicator both on top and bottom
 - Supports blocks
 - Works with ARC and iOS >= 5
+- **Supports scroll real time** (_new property_)
+
+
 
 # Installation
 
@@ -42,6 +45,9 @@ Included is a demo project showing how to fully customise the control.
 ![HMSegmentedControl](https://raw.github.com/HeshamMegid/HMSegmentedControl/master/Screenshot.png)
 
 # Change log
+* v1.5
+	* Add a real time scroll method 
+	* Add a test method to show how to use the real time scroll method
 * v1.4
 	* Lots of bug fixes
 	* Add AutoLayout support
