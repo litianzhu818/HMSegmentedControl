@@ -88,7 +88,7 @@
     self.segmentedControl4.selectedTextColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
     self.segmentedControl4.selectionIndicatorColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1];
     self.segmentedControl4.selectionStyle = HMSegmentedControlSelectionStyleBox;
-    self.segmentedControl4.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleDynamic;
+//    self.segmentedControl4.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleDynamic;
     self.segmentedControl4.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationUp;
     self.segmentedControl4.tag = 3;
     
@@ -144,12 +144,22 @@
 }
 
 #pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    CGFloat scrollOffset = scrollView.contentOffset.x / pageWidth;
+    
+    [self.segmentedControl4 moveSelectionIndicatorWithScrollOffset:scrollOffset];
+    
+    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
     CGFloat pageWidth = scrollView.frame.size.width;
     NSInteger page = scrollView.contentOffset.x / pageWidth;
     
     [self.segmentedControl4 setSelectedSegmentIndex:page animated:YES];
+    //[self.segmentedControl4 setSelectedSegmentIndex:page];
 }
 
 @end
